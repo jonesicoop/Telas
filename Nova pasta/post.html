@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Conecta FSA - Nova Publicação</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+  <div class="container">
+    <!-- LOGO -->
+    <div class="logo-container">
+      <h1 class="logo">CONECTA 
+        <span class="fsa">F</span>
+        <span class="fsa">S</span>
+        <span class="fsa">A</span>
+      </h1>
+    </div>
+
+    <!-- CARD DE PUBLICAÇÃO -->
+    <div class="card post-card">
+      <div class="post-header">
+        <a href="#" class="cancelar-link">Cancelar</a>
+        <button type="submit" class="btn postar-btn">Postar</button>
+      </div>
+
+      <div class="post-content">
+        <div class="user-info">
+          <img src="https://placehold.co/40x40/003366/ffffff?text=User" alt="Foto do usuário" class="user-avatar">
+          <textarea placeholder="O que está acontecendo?" class="post-textarea"></textarea>
+        </div>
+      </div>
+
+      <!-- BOTÕES INFERIORES E CAIXA DE TAGS -->
+      <div class="post-actions">
+        <div class="action-buttons">
+          <button class="action-btn"><i class="fas fa-image"></i></button>
+          <button class="action-btn"><i class="fas fa-poll"></i></button>
+          <button class="action-btn"><i class="fas fa-calendar-alt"></i></button>
+          <button class="action-btn"><i class="fas fa-plus"></i></button>
+        </div>
+        <div class="tag-dropdown">
+          <button class="tag-toggle">
+            Tag <i class="fas fa-caret-down tag-icon"></i>
+          </button>
+          <div class="tags-container">
+            <button class="tag-btn">Arquitetura</button>
+            <button class="tag-btn">Biologia</button>
+            <button class="tag-btn">Comunicação</button>
+            <button class="tag-btn">Tecnologia</button>
+            <button class="tag-btn">Engenharia</button>
+            <button class="tag-btn">Saúde</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const tagToggle = document.querySelector('.tag-toggle');
+      const tagDropdown = document.querySelector('.tag-dropdown');
+      const tagsContainer = document.querySelector('.tags-container');
+
+      if (tagToggle && tagDropdown && tagsContainer) {
+        tagToggle.addEventListener('click', function(event) {
+          event.stopPropagation(); // Impede que o clique se propague para o documento
+          tagsContainer.classList.toggle('show');
+          tagDropdown.classList.toggle('active');
+        });
+
+        // Fecha a caixa de tags se o usuário clicar fora dela
+        document.addEventListener('click', function(event) {
+          if (!tagDropdown.contains(event.target)) {
+            tagsContainer.classList.remove('show');
+            tagDropdown.classList.remove('active');
+          }
+        });
+      }
+    });
+  </script>
+</body>
+</html>
